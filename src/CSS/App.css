@@ -28,3 +28,12 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.postButton {
+    position: absolute;
+    bottom: 1in;
+    width: 70%;
+
+    text-decoration: underline;
+    /* background-color: antiquewhite; */
+}

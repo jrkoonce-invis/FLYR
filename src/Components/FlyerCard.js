@@ -3,13 +3,19 @@ import React from "react"
 // css
 import "../CSS/FlyerCard.css"
 
-// components
-// import { Button, Card } from "react-bootstrap";
 
-const FlyerCard = ({count}) => {
+const FlyerCard = ({path, org, date, loc}) => {
     return (
         <div className="card">
-            Card Number {count}: Some quick example text
+            <img src={`static/${path}`}/>
+            <div className="info">
+                <p>Organization: {org}</p>
+                <br></br>
+                <p>Date: {date}</p>
+                <br></br>
+                <p>Location: {loc}</p>
+            </div>
+            
         </div>
     )
 }

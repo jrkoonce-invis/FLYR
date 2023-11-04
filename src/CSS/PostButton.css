@@ -1,0 +1,40 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* transform: translate(-50%, 50%); */
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #121212;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    margin-top: 10vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* background-color: darkblue; */
+}
+
+.form div {
+    margin-top: .1in;
+}
+
+.form input {
+    background-color: #121212;
+    border-style: solid;
+}
+
+.cancel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 1in;
+    cursor: pointer;
+    text-decoration: underline;
+}

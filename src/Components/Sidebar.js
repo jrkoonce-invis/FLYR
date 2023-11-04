@@ -1,5 +1,8 @@
 import React from "react"
 
+// components
+import PostButton from "./PostButton"
+
 // css
 import "../CSS/Sidebar.css"
 
@@ -11,6 +14,7 @@ const Sidebar = ({className}) => {
                 <p>Filter 1</p>
                 <p>Filter 2</p>
                 <p>Filter 3</p>
+                <PostButton className="postButton"></PostButton>
             </div>
         </div>
     )

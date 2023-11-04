@@ -1,13 +1,24 @@
 .card {
-    width: 2in;
-    height: 2in;
-    margin: .2in;
+    height: 80vh;
+    padding: .1in;
+    margin: .1in;
     flex: 40%;
+    object-fit: contain;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    background-color: darkblue;
+    justify-content: flex-start;
+    gap: .1in
+    /* background-color: darkblue; */
 }
 
+.card img {
+    width: auto;
+    height: 100%;
+}
+
+.info {
+    height: 100%;
+    /* background-color: aquamarine; */
+}
