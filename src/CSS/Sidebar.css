@@ -1,0 +1,23 @@
+.sidebar {
+    color: white;
+    padding-top: .4in; /* (2in sidebar - 1.2in logo) / 2 for padding on each side */
+    box-sizing: border-box; /* makes the padding not increase size of sidebar */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    width: 1.2in;
+    height: 1.2in;
+}
+
+.filters {
+    margin-top: 1in;
+}
+
+.filters p {
+    margin: .2in;
+}

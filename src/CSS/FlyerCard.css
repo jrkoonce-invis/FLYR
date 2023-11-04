@@ -1,0 +1,13 @@
+.card {
+    width: 2in;
+    height: 2in;
+    margin: .2in;
+    flex: 40%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: darkblue;
+}
+
