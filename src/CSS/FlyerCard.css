@@ -9,13 +9,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: .1in
+    gap: .1in;
     /* background-color: darkblue; */
 }
 
 .card img {
     width: auto;
-    height: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .info {

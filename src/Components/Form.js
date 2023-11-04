@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const Form = ({className}) => {
+const Form = ({className, callBack}) => {
   const [formData, setFormData] = useState({
-    organizationName: '',
+    org: '',
     pointOfContact: '',
-    location: '',
+    loc: '',
     date: '',
   });
   const [selectedFile, setSelectedFile] = useState(null);
+  const TOTAL_FORM_DATA = new FormData()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,25 +29,28 @@ const Form = ({className}) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted with the following data:', {
-      ...formData,
-      file: selectedFile,
-    });
-    // You can add code to handle the form submission here
-  };
+  const handleSubmit = async () => {
+    if (selectedFile != null) {
+        TOTAL_FORM_DATA.append("data", JSON.stringify(formData))
+        TOTAL_FORM_DATA.append("file", selectedFile)
+        await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
+            .then((response) => {
+                console.log(response)
+                callBack() // closes modal from parent component
+            });
+    }
+  }
 
   return (
     <div className={className}>
       <h2>Flyer Upload</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="organizationName">Organization Name: </label>
+          <label htmlFor="org">Organization Name: </label>
           <input
             type="text"
-            id="organizationName"
-            name="organizationName"
+            id="org"
+            name="org"
             value={formData.organizationName}
             onChange={handleInputChange}
           />
@@ -61,11 +66,11 @@ const Form = ({className}) => {
           />
         </div>
         <div>
-          <label htmlFor="location">Location: </label>
+          <label htmlFor="loc">Location: </label>
           <input
             type="text"
-            id="location"
-            name="location"
+            id="loc"
+            name="loc"
             value={formData.location}
             onChange={handleInputChange}
           />
@@ -89,7 +94,7 @@ const Form = ({className}) => {
             onChange={handleFileChange}
           />
         </div>
-        <div style={{cursor: "pointer", textDecoration: "underline", marginTop: ".2in", marginLeft: "10%"}}>Submit</div>
+        <div onClick={handleSubmit} style={{cursor: "pointer", textDecoration: "underline", marginTop: ".2in", marginLeft: "10%"}}>Submit</div>
       </form>
     </div>
   );

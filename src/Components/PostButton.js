@@ -25,7 +25,7 @@ const PostButton = ({className}) => {
             {modalShowing &&
                 <div className="modal">
                     <div onClick={closeModal} className="cancel">Cancel</div>
-                    <Form className="form"></Form>
+                    <Form callBack={closeModal} className="form"></Form>
                 </div>
             }
 

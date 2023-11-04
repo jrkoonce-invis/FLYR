@@ -1,9 +1,12 @@
-from flask import Flask, render_template, send_file
+from flask import Flask, request, render_template
 from flask_cors import CORS
-import base64, json
+import base64, json, os
 
 app = Flask(__name__,  static_url_path='', static_folder='build', template_folder='build')
 CORS(app)
+
+UPLOAD_FOLDER = "build/static"  # Directory to store uploaded files
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 FLYER_DATA = [
     {
@@ -59,7 +62,7 @@ def root():
 
 
 # API returns accepted flyers
-@app.route("/flyers", methods=['GET'])
+@app.route("/flyers", methods=["GET"])
 def flyers():
 
     # image_file = open("static/flyer1.png", "rb")
@@ -67,8 +70,26 @@ def flyers():
     # image_file2 = open("static/flyer2.png", "rb")
     # encoded_string2 = base64.b64encode(image_file2.read())
 
-    data = ["flyer1.png", "flyer2.png", "flyer3.jpg", "flyer4.png", "flyer5.png", "flyer6.png"]
     return FLYER_DATA
+
+
+# API retrives uploaded flyer data
+@app.route("/upload", methods=["POST"])
+def upload():
+    # uploads fild to flyer directory
+    file = request.files['file']
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+
+    # adds data to flyer data
+    data = json.loads(request.form["data"])
+    data["isValid"] = "TRUE"
+    data["filename"] = file.filename
+
+    FLYER_DATA.append(data)
+
+    # response of approval
+    return 'File uploaded successfully'
+
 
 
 if __name__ == '__main__':
