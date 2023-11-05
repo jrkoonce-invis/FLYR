@@ -1,9 +1,28 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
+from bson import json_util, ObjectId
 from flask_cors import CORS
-import base64, json, os
+import base64, json, os, io
+
+# MongoDB
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 app = Flask(__name__,  static_url_path='', static_folder='build', template_folder='build')
 CORS(app)
+
+uri = "mongodb+srv://flyr:buildillinois@flyr.u2onar1.mongodb.net/?retryWrites=true&w=majority"
+
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+
+db = client.Flyr
 
 UPLOAD_FOLDER = "build/static"  # Directory to store uploaded files
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -64,13 +83,15 @@ def root():
 # API returns accepted flyers
 @app.route("/flyers", methods=["GET"])
 def flyers():
+    flyerData = db.FlyerData
+    mongoData = list(flyerData.find({}))
 
-    # image_file = open("static/flyer1.png", "rb")
-    # encoded_string = base64.b64encode(image_file.read())
-    # image_file2 = open("static/flyer2.png", "rb")
-    # encoded_string2 = base64.b64encode(image_file2.read())
+    for item in mongoData:
+        item["imageData"] = str(base64.b64encode(item["imageData"]).decode('utf-8'))
 
-    return FLYER_DATA
+    # https://www.mongodb.com/community/forums/t/how-should-i-handle-objectid-with-flask/178220
+    # Return data as JSON
+    return jsonify(json.loads(json_util.dumps(mongoData)))
 
 
 # API retrives uploaded flyer data
@@ -78,14 +99,23 @@ def flyers():
 def upload():
     # uploads fild to flyer directory
     file = request.files['file']
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+    # file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
 
     # adds data to flyer data
     data = json.loads(request.form["data"])
     data["isValid"] = "TRUE"
     data["filename"] = file.filename
 
-    FLYER_DATA.append(data)
+    image_data = file.read()
+    image_data = io.BytesIO(image_data).read()
+    print("image_data", image_data)
+    data["imageData"] = image_data
+
+    # Need this to update FLYER_DATA with POSTed data
+    # FLYER_DATA.append(data)
+
+    flyerData = db.FlyerData
+    flyerData.insert_one(data)
 
     # response of approval
     return 'File uploaded successfully'
