@@ -1,18 +1,21 @@
 import React from "react"
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-// components
-import Sidebar from "./Components/Sidebar";
-import Flyers from "./Components/Flyers";
-
-// css
-import "./CSS/App.css"
+// Pages
+import User from "./User"
+import Admin from "./Admin";
+import Logout from "./Components/Logout";
 
 const App = () => {
+
     return (
-        <div className="content">
-            <Sidebar className="sidebar"></Sidebar>
-            <Flyers className="flyers"></Flyers>
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/" element={<User />} />
+                <Route path="/logout" element={<Logout />} />
+            </Routes>
+        </Router>
     )
 }
 

@@ -4,10 +4,10 @@ import React from "react"
 import "../CSS/FlyerCard.css"
 
 
-const FlyerCard = ({path, org, date, loc}) => {
+const FlyerCard = ({imageData, org, date, loc}) => {
     return (
         <div className="card">
-            <img src={`static/${path}`}/>
+            <img src={`data:image/png;base64,${imageData}`}/>
             <div className="info">
                 <p>Organization: {org}</p>
                 <br></br>
@@ -15,7 +15,6 @@ const FlyerCard = ({path, org, date, loc}) => {
                 <br></br>
                 <p>Location: {loc}</p>
             </div>
-            
         </div>
     )
 }
