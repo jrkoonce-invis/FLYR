@@ -4,7 +4,7 @@ import axios from "axios"
 // components
 import FlyerCard from "./AdminFlyerCard"
 
-const Flyers = ({className}) => {
+const Flyers = () => {
 
     const [isChecked, setIsChecked] = React.useState(false)
     const [flyerData, setFlyerData] = React.useState([])

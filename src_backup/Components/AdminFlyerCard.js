@@ -1,6 +1,8 @@
 import React from "react"
 import axios from "axios"
 
+// css
+import "../CSS/FlyerCard.css"
 
 
 const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename}) => {
@@ -20,9 +22,9 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename}) => {
     }
 
     return (
-        <div>
+        <div className="card">
             <img src={`data:image/png;base64,${imageData}`}/>
-            <div>
+            <div className="info">
                 <p>Organization: {org}</p>
                 <br></br>
                 <p>Date: {date}</p>

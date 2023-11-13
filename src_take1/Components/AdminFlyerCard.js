@@ -2,7 +2,6 @@ import React from "react"
 import axios from "axios"
 
 
-
 const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename}) => {
 
     const deleteFlyer = async () => {
@@ -20,7 +19,7 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename}) => {
     }
 
     return (
-        <div>
+        <div className="card">
             <img src={`data:image/png;base64,${imageData}`}/>
             <div>
                 <p>Organization: {org}</p>

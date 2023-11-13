@@ -5,7 +5,7 @@ import axios from "axios"
 import FlyerCard from "./FlyerCard"
 import { ReactComponent as Svg } from "../Assets/Dual Ball-1s-200px(1).svg";
 
-const Flyers = ({handleScroll}) => {
+const Flyers = ({className}) => {
 
     const [flyerData, setFlyerData] = React.useState([])
     const [loaded, setLoaded] = React.useState(false)
@@ -24,11 +24,9 @@ const Flyers = ({handleScroll}) => {
     }, [])
 
     return (
-        <div onScroll={handleScroll} className="grid xl:grid-cols-2 grid-cols-1 justify-items-center snap-y snap-mandatory h-screen overflow-auto no-scrollbar">
+        <div className={className}>
             {!loaded &&
-                <div className="fixed left-[calc(50vw)] bottom-1/2">
-                    <Svg></Svg>
-                </div>
+                <Svg></Svg>
             }
             {flyerData.map((item, idx) => {
                 if (item.isValid == "TRUE") {

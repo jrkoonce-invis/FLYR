@@ -35,8 +35,8 @@ const Flyers = ({className}) => {
 
     return (
         <div>
-            <div><h3>Check to access all flyers: </h3><input type="checkbox" checked={isChecked} onChange={handleChange} /></div>
-            <div>
+            <div style={{display: "flex", gap:".5in"}}><h3>Check to access all flyers: </h3><input type="checkbox" checked={isChecked} onChange={handleChange} /></div>
+            <div className={className}>
                 {flyerData.map((item, idx) => {
 
                     if (item.isValid == showAllFlyers) {

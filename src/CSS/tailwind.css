@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scene {
+    perspective: 600%;
+}
+
+.flipcard {
+    position: relative;
+    z-index: -1;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+
+  .card__face {
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+  }
+
+  .flipcard.is-flipped {
+    transform: rotateY(180deg);
+  }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Form = ({className, callBack}) => {
+const Form = ({callBack}) => {
   const [formData, setFormData] = useState({
     org: '',
     pointOfContact: '',
@@ -42,60 +42,63 @@ const Form = ({className, callBack}) => {
   }
 
   return (
-    <div className={className}>
-      <h2>Flyer Upload</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="org">Organization Name: </label>
-          <input
-            type="text"
-            id="org"
+    <div className="grid justify-items-center gap-4">
+      <h1 className="text-3xl">Flyer Upload</h1>
+
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">Organization Name</span>
+        </label>
+        <input type="text"id="org"
             name="org"
             value={formData.organizationName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="pointOfContact">Point of Contact: </label>
-          <input
-            type="text"
-            id="pointOfContact"
+            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+      </div>
+
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">Point of Contact</span>
+        </label>
+        <input type="text" id="pointOfContact"
             name="pointOfContact"
             value={formData.pointOfContact}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="loc">Location: </label>
-          <input
-            type="text"
-            id="loc"
+            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+      </div>
+
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">Location</span>
+        </label>
+        <input type="text" id="loc"
             name="loc"
             value={formData.location}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="date">Date: </label>
+            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+      </div>
+
+      <div className="w-full">
+          <label className="label">
+            <span className="label-text">Date</span>
+          </label>
           <input
+            className="bg-base-100 input input-bordered w-full"
             type="date"
             id="date"
             name="date"
             value={formData.date}
             onChange={handleInputChange}
           />
-        </div>
-        <div>
-          <label htmlFor="file">Upload a PNG or JPG file: </label>
-          <input
-            type="file"
-            accept=".jpg, .jpeg, .png"
+      </div>
+
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">Input Flyer File (PNG, JPG/JPEG)</span>
+        </label>
+        <input type="file" accept=".jpg, .jpeg, .png"
             id="file"
-            onChange={handleFileChange}
-          />
-        </div>
-        <div onClick={handleSubmit} style={{cursor: "pointer", textDecoration: "underline", marginTop: ".2in", marginLeft: "10%"}}>Submit</div>
-      </form>
+            onChange={handleFileChange} className="file-input file-input-bordered w-full max-w-xs" />
+      </div>
+
+      <button className="btn btn-outline btn-accent" onClick={handleSubmit}>Submit</button>
     </div>
   );
 }
