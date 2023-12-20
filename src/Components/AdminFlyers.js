@@ -6,12 +6,14 @@ import FlyerCard from "./AdminFlyerCard"
 
 const Flyers = ({className}) => {
 
+    const url = "../../flyers"
+
     const [isChecked, setIsChecked] = React.useState(false)
     const [flyerData, setFlyerData] = React.useState([])
     const [showAllFlyers, setShowAllFlyers] = React.useState("FALSE")
 
     const fetchData = async () => {
-        await axios.get("http://127.0.0.1:8000/flyers")
+        await axios.get(url)
           .then((response) => {
             console.log(response.data)
             setFlyerData(response.data)

@@ -7,11 +7,14 @@ import { ReactComponent as Svg } from "../Assets/Dual Ball-1s-200px(1).svg";
 
 const Flyers = ({handleScroll}) => {
 
+    const url = "../../flyers"
+
     const [flyerData, setFlyerData] = React.useState([])
     const [loaded, setLoaded] = React.useState(false)
 
     const fetchData = async () => {
-        await axios.get("http://127.0.0.1:8000/flyers")
+        // await axios.get("http://127.0.0.1:8000/flyers")
+        await axios.get(url)
           .then((response) => {
             console.log(response.data)
             setLoaded(true)

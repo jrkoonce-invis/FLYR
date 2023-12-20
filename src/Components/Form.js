@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Form = ({callBack}) => {
+  const url = "../../upload"
+
   const [formData, setFormData] = useState({
     org: '',
     pointOfContact: '',
@@ -33,7 +35,8 @@ const Form = ({callBack}) => {
     if (selectedFile != null) {
         TOTAL_FORM_DATA.append("data", JSON.stringify(formData))
         TOTAL_FORM_DATA.append("file", selectedFile)
-        await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
+        // await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
+        await axios.post(url, TOTAL_FORM_DATA)
             .then((response) => {
                 console.log(response)
                 callBack() // closes modal from parent component
