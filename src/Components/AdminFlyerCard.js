@@ -3,17 +3,17 @@ import axios from "axios"
 
 
 
-const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename}) => {
+const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid}) => {
 
     const deleteFlyer = async () => {
-        await axios.delete("http://127.0.0.1:8000/admin", { params : { "filename" : filename } })
+        await axios.delete("http://127.0.0.1:8000/admin", { params : { "mongoid" : mongoid["$oid"] } })
           .then((response) => {
             console.log(response)
           });
     }
 
     const acceptFlyer = async () => {
-        await axios.put("http://127.0.0.1:8000/admin", null, { params : { "filename" : filename } })
+        await axios.put("http://127.0.0.1:8000/admin", null, { params : { "mongoid" : mongoid["$oid"] } })
           .then((response) => {
             console.log(response)
           });

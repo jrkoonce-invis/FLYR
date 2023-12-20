@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template, jsonify, redirect
-from bson import json_util, ObjectId
+from bson import json_util
 from flask_cors import CORS
 import base64, json, os, io
+from bson.objectid import ObjectId
 
 # Auth0 imports
 from os import environ as env
@@ -159,7 +160,7 @@ def flyers():
     return jsonify(json.loads(json_util.dumps(mongoData)))
 
 
-# API retrives uploaded flyer data
+# API retrieves uploaded flyer data
 @app.route("/upload", methods=["POST"])
 def upload():
     file = request.files['file']
@@ -193,11 +194,12 @@ def admin():
     flyerData = db.FlyerData
 
     if request.method == "PUT":
-        filename = request.args.get("filename")
-        filter = {"filename": filename}
+        mongoid = request.args.get("mongoid")
+
+        filter = {"_id": ObjectId(mongoid)}
         update = {"$set": {"isValid": "TRUE"}}
 
-        print(filename)
+        print(ObjectId(mongoid))
 
         count = flyerData.count_documents(filter)
         print(count)
@@ -208,11 +210,12 @@ def admin():
         return "Accepted flyer successfully"
 
     if request.method == "DELETE":
-        filename = request.args.get("filename")
-        if filename:
-            count = flyerData.count_documents({"filename": filename})
-            print(count, filename)
-            flyerData.delete_one({"filename": filename})
+        mongoid = request.args.get("mongoid")
+        print(mongoid, ObjectId(mongoid))
+        if ObjectId(mongoid):
+            count = flyerData.count_documents({"_id": (ObjectId(mongoid))})
+            print(count, ObjectId(mongoid))
+            flyerData.delete_one({"_id": ObjectId(mongoid)})
         return "Deleted flyer successfully"
 
 
