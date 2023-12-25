@@ -40,11 +40,11 @@ const Sidebar = ({ postClick }) => {
     }
 
     return (
-        <div className="h-screen">
+        <div className="h-screen flex flex-col justify-items-center justify-center">
 
             {/* LOGO */}
             <div className="mt-8">
-                <img className="object-contain w-60 h-32" src={require("../Assets/LOGO_DM.png")}  alt={"Logo"}/>
+                <img className="object-contain w-full h-32" src={require("../Assets/LOGO_DM.png")}  alt={"Logo"}/>
             </div>
 
             {/* CATEGORIES MODAL */}

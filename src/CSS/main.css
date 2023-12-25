@@ -3484,8 +3484,16 @@ details.collapse summary::-webkit-details-marker {
   z-index: 0;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-40 {
   z-index: 40;
+}
+
+.m-0 {
+  margin: 0px;
 }
 
 .m-8 {
@@ -3500,12 +3508,20 @@ details.collapse summary::-webkit-details-marker {
   margin-bottom: 1.25rem;
 }
 
+.ml-\[85vw\] {
+  margin-left: 85vw;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-\[\.3in\] {
+  margin-top: .3in;
 }
 
 .flex {
@@ -3546,6 +3562,10 @@ details.collapse summary::-webkit-details-marker {
 
 .h-\[calc\(100\%-10rem\)\] {
   height: calc(100% - 10rem);
+}
+
+.h-\[calc\(100vh\)\] {
+  height: calc(100vh);
 }
 
 .h-\[calc\(100vh-8rem\)\] {
@@ -3697,12 +3717,20 @@ details.collapse summary::-webkit-details-marker {
   flex-direction: row;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .content-center {
   align-content: center;
 }
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {

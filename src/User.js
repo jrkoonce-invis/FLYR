@@ -36,7 +36,7 @@ const User = () => {
             </div>
 
             {/* MOBILE TOPBAR */}
-            <div className="z-0 h-[1in] w-screen t-0 fixed bg-base-400 md:hidden flex flex-row items-center pl-5 pr-5 justify-between">
+            <div className="z-20 h-[1in] w-screen m-0 t-0 fixed bg-base-400 md:hidden flex flex-row items-center pl-5 pr-5 justify-between">
 
                     <div className="">
                         <img className="object-contain w-[.7in] h-[.7in]" src={require(".//Assets/LOGO_DM.png")}  alt={"Logo"}/>
@@ -52,7 +52,7 @@ const User = () => {
             <div className={`w-screen h-screen md:hidden duration-[400ms] fixed z-40 bg-base-100 ${
                 filters ? "translate-x-0" : "translate-x-[-100vw]"
                 }`}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" dataSlot="icon" className="w-[.4in] h-[.4in] cursor-pointer" onClick={onHamburgerClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" dataSlot="icon" className="w-[.4in] h-[.4in] cursor-pointer mt-[.3in] ml-[85vw]" onClick={onHamburgerClick}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
 
@@ -60,7 +60,7 @@ const User = () => {
             </div>
 
             {/* FLYERS SECTION */}
-            <div className="z-0 md:h-screen pt-[1in] md:p-0 md:ml-60">
+            <div className="z-0 h-[calc(100vh)] pt-[1in] md:h-screen md:p-0 md:ml-60">
                 <Flyers handleScroll={handleScroll}></Flyers>
             </div>
 
