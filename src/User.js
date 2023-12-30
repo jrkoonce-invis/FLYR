@@ -19,11 +19,14 @@ const User = () => {
         setArrowvis("w-12 h-12 opacity-0")
     }
 
+    // Displaying filters sidebar on mobile view
     const [filters, setFilters] = React.useState(false)
-
     const onHamburgerClick = () => {
         setFilters(!filters)
     }
+
+    // Filtering based on user selection
+    const [selectedFilters, setSelectedFilters] = React.useState("")
 
     return (
         <div>
@@ -32,7 +35,7 @@ const User = () => {
 
             {/* SIDEBAR */}
             <div className="w-60 h-[screen-8rem] hidden fixed md:block">
-                <Sidebar postClick={postClick}></Sidebar>
+                <Sidebar postClick={postClick} setSelectedFilters={setSelectedFilters} selectedFilters={selectedFilters}></Sidebar>
             </div>
 
             {/* MOBILE TOPBAR */}
@@ -56,12 +59,12 @@ const User = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
 
-                <Sidebar postClick={postClick}></Sidebar>
+                <Sidebar postClick={postClick} setSelectedFilters={setSelectedFilters} selectedFilters={selectedFilters}></Sidebar>
             </div>
 
             {/* FLYERS SECTION */}
             <div className="z-0 h-[calc(100vh)] pt-[1in] md:h-screen md:p-0 md:ml-60">
-                <Flyers handleScroll={handleScroll}></Flyers>
+                <Flyers handleScroll={handleScroll} selectedFilters={selectedFilters}></Flyers>
             </div>
 
             {/* ARROW SCROLL ANIMATION */}

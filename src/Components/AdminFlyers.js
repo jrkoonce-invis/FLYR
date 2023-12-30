@@ -13,6 +13,7 @@ const Flyers = ({className}) => {
     const [showAllFlyers, setShowAllFlyers] = React.useState("FALSE")
 
     const fetchData = async () => {
+        // await axios.get("http://127.0.0.1:8000/flyers")
         await axios.get(url)
           .then((response) => {
             console.log(response.data)
@@ -38,10 +39,10 @@ const Flyers = ({className}) => {
     return (
         <div>
             <div><h3>Check to access all flyers: </h3><input type="checkbox" checked={isChecked} onChange={handleChange} /></div>
-            <div>
+            <div className="grid grid-cols-3 gap-4">
                 {flyerData.map((item, idx) => {
 
-                    if (item.isValid == showAllFlyers) {
+                    if (item.isValid == "FALSE" || showAllFlyers == "TRUE") {
                         return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} pointOfContact={item.pointOfContact} filename={item.filename} mongoid={item._id} />
                     }
                 })}

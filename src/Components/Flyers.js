@@ -5,7 +5,7 @@ import axios from "axios"
 import FlyerCard from "./FlyerCard"
 import { ReactComponent as Svg } from "../Assets/Dual Ball-1s-200px(1).svg";
 
-const Flyers = ({handleScroll}) => {
+const Flyers = ({handleScroll, selectedFilters}) => {
 
     const url = "../../flyers"
 
@@ -18,7 +18,7 @@ const Flyers = ({handleScroll}) => {
           .then((response) => {
             console.log(response.data)
             setLoaded(true)
-            setFlyerData(response.data)
+            setFlyerData(response.data.sort(() => Math.random() - 0.5))
           });
     }
 
@@ -34,8 +34,24 @@ const Flyers = ({handleScroll}) => {
                 </div>
             }
             {flyerData.map((item, idx) => {
-                if (item.isValid == "TRUE") {
-                    return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} />
+
+                // date comparison
+                var q = new Date();
+                var m = q.getMonth();
+                var d = q.getDay();
+                var y = q.getFullYear();
+
+                var date = new Date(y, m, d);
+                var mydate = new Date(item.date);
+
+                if (item.isValid == "TRUE" &&  (selectedFilters.length == 0 || 
+                                                selectedFilters.split(",").includes(item.filter_location) || 
+                                                selectedFilters.split(",").includes(item.filter_time) || 
+                                                (selectedFilters.split(",").includes(item.cate1) && item.cate1 != "") || 
+                                                (selectedFilters.split(",").includes(item.cate2) && item.cate2 != "") || 
+                                                (selectedFilters.split(",").includes(item.cate3) && item.cate3 != "") )
+                                                && date <= mydate) {
+                    return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} cate1={item.cate1} cate2={item.cate2} cate3={item.cate3} />
                 }
             })}
         </div>

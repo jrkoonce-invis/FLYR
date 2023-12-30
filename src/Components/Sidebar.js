@@ -3,7 +3,7 @@ import React from "react"
 // components
 import PostButton from "./PostButton"
 
-const Sidebar = ({ postClick }) => {
+const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
 
     const [categories, setCategories] = React.useState(false)
     const [location, setLocation] = React.useState(false)
@@ -37,6 +37,16 @@ const Sidebar = ({ postClick }) => {
             setCategories(false)
             setLocation(false)
         }
+    }
+
+    // handle user selecting filters
+    const handleFilter = (e) => {
+        if(e.target.checked){
+            setSelectedFilters(selectedFilters + "," + (e.target.value))
+         } else {
+            let filtersArray = selectedFilters.split(",")
+            setSelectedFilters( (filtersArray.filter((i) => (i != e.target.value))).join(",") )
+         }
     }
 
     return (
@@ -94,39 +104,80 @@ const Sidebar = ({ postClick }) => {
                     <div className="overflow-auto max-h-60 no-scrollbar">
                         <label class="cursor-pointer label">
                             <span class="label-text">Academic/Honor Societies</span>
-                            <input type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="Academic/Honor Societies" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Activism</span>
-                            <input type="checkbox" class="checkbox checkbox-secondary" />
+                            <input onChange={handleFilter} value="Activism" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Business and Entrepreneurship</span>
-                            <input type="checkbox" class="checkbox checkbox-accent" />
+                            <input onChange={handleFilter} value="Business and Entrepreneurship" type="checkbox" class="checkbox checkbox-accent" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Performing Arts</span>
-                            <input type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="Performing Arts" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Cultural</span>
-                            <input type="checkbox" class="checkbox checkbox-secondary" />
+                            <input onChange={handleFilter} value="Cultural" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Enviromental</span>
-                            <input type="checkbox" class="checkbox checkbox-accent" />
+                            <input onChange={handleFilter} value="Enviromental" type="checkbox" class="checkbox checkbox-accent" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Governance</span>
-                            <input type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="Governance" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Graduate/PhD</span>
-                            <input type="checkbox" class="checkbox checkbox-secondary" />
+                            <input onChange={handleFilter} value="Graduate/PhD" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Health and Wellness</span>
-                            <input type="checkbox" class="checkbox checkbox-accent" />
+                            <input onChange={handleFilter} value="Health and Wellness" type="checkbox" class="checkbox checkbox-accent" />
+                        </label>
+
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Arts and Media</span>
+                            <input onChange={handleFilter} value="Arts and Media" type="checkbox" class="checkbox checkbox-primary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Religious/Spiritual</span>
+                            <input onChange={handleFilter} value="Religious/Spiriitual" type="checkbox" class="checkbox checkbox-secondary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Engineering</span>
+                            <input onChange={handleFilter} value="Enineering" type="checkbox" class="checkbox checkbox-accent" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Sciences</span>
+                            <input onChange={handleFilter} value="Sciences" type="checkbox" class="checkbox checkbox-primary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">University</span>
+                            <input onChange={handleFilter} value="University" type="checkbox" class="checkbox checkbox-secondary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Service</span>
+                            <input onChange={handleFilter} value="Service" type="checkbox" class="checkbox checkbox-accent" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Fraternaties/ Sororities</span>
+                            <input onChange={handleFilter} value="Fraternaties/ Sororities" type="checkbox" class="checkbox checkbox-primary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Governance</span>
+                            <input onChange={handleFilter} value="Governance" type="checkbox" class="checkbox checkbox-secondary" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Sports and Recreation</span>
+                            <input onChange={handleFilter} value="Sports and Recreation" type="checkbox" class="checkbox checkbox-accent" />
+                        </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Free Food</span>
+                            <input onChange={handleFilter} value="Free Food" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                     </div>
 
@@ -140,15 +191,15 @@ const Sidebar = ({ postClick }) => {
                     <div class="collapse-content form-control">
                         <label class="cursor-pointer label">
                             <span class="label-text">On-Campus</span>
-                            <input type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="oncampus" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Off-Campus</span>
-                            <input type="checkbox" class="checkbox checkbox-secondary" />
+                            <input onChange={handleFilter} value="offcampus" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Remote</span>
-                            <input type="checkbox" class="checkbox checkbox-accent" />
+                            <input onChange={handleFilter} value="remote" type="checkbox" class="checkbox checkbox-accent" />
                         </label>
                     </div>
                 </div>
@@ -160,15 +211,15 @@ const Sidebar = ({ postClick }) => {
                     <div class="collapse-content form-control">
                         <label class="cursor-pointer label">
                             <span class="label-text">Within the Week</span>
-                            <input type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="week" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Within the Month</span>
-                            <input type="checkbox" class="checkbox checkbox-secondary" />
+                            <input onChange={handleFilter} value="month" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
                             <span class="label-text">Non-Event</span>
-                            <input type="checkbox" class="checkbox checkbox-accent" />
+                            <input onChange={handleFilter} value="nonevent" type="checkbox" class="checkbox checkbox-accent" />
                         </label>
                     </div>
                 </div>
