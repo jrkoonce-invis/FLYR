@@ -39,6 +39,14 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
         }
     }
 
+    const aboutUsView = () => {
+        my_modal_2.showModal()
+    }
+
+    const refreshLogo = () => {
+        window.location.reload();
+    }
+
     // handle user selecting filters
     const handleFilter = (e) => {
         if(e.target.checked){
@@ -54,7 +62,7 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
 
             {/* LOGO */}
             <div className="mt-8">
-                <img className="object-contain w-full h-32" src={require("../Assets/LOGO_DM.png")}  alt={"Logo"}/>
+                <img className="object-contain w-full h-32 hover:cursor-pointer" src={require("../Assets/LOGO_DM.png")} onClick={refreshLogo}  alt={"Logo"}/>
             </div>
 
             {/* CATEGORIES MODAL */}
@@ -223,9 +231,22 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                         </label>
                     </div>
                 </div>
-                <div className="grid justify-items-center mb-4">
+                <div className="grid justify-items-center mb-4 mt-10">
                     <PostButton postClick={postClick}></PostButton>
                 </div>
+
+                <button className="btn btn-neutral w-full" onClick={aboutUsView}>About Us</button>
+                <dialog id="my_modal_2" class="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">About Us</h3>
+                        <p className="py-4">Hello! We are FLYR, an....</p>
+                    </div>
+                    <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                    </form>
+                </dialog>
+
+
             </div>
         </div>
     )

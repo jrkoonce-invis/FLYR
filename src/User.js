@@ -19,6 +19,10 @@ const User = () => {
         setArrowvis("w-12 h-12 opacity-0")
     }
 
+    const refreshLogo = () => {
+        window.location.reload();
+    }
+
     // Displaying filters sidebar on mobile view
     const [filters, setFilters] = React.useState(false)
     const onHamburgerClick = () => {
@@ -42,7 +46,7 @@ const User = () => {
             <div className="z-20 h-[1in] w-screen m-0 t-0 fixed bg-base-400 md:hidden flex flex-row items-center pl-5 pr-5 justify-between">
 
                     <div className="">
-                        <img className="object-contain w-[.7in] h-[.7in]" src={require(".//Assets/LOGO_DM.png")}  alt={"Logo"}/>
+                        <img className="object-contain w-[.7in] h-[.7in] hover:cursor-pointer" src={require(".//Assets/LOGO_DM.png")}  alt={"Logo"} onClick={refreshLogo} />
                     </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" dataSlot="icon" className="w-[.4in] h-[.4in] cursor-pointer" onClick={onHamburgerClick}>

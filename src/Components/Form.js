@@ -8,6 +8,7 @@ const Form = ({callBack}) => {
     org: '',
     pointOfContact: '',
     loc: '',
+    link: '',
     date: '',
 
     filter_location: '',
@@ -41,7 +42,14 @@ const Form = ({callBack}) => {
   };
 
   const handleSubmit = async () => {
-    if (selectedFile != null) {
+    if (selectedFile != null  && formData.org != ""
+                              && formData.pointOfContact != ""
+                              && formData.loc != ""
+                              && formData.link != ""
+                              && formData.date != ""
+                              && formData.filter_location != ""
+                              && formData.filter_time != ""
+                              && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(formData.pointOfContact) ) {
         TOTAL_FORM_DATA.append("data", JSON.stringify(formData))
         TOTAL_FORM_DATA.append("file", selectedFile)
         // await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
@@ -51,6 +59,8 @@ const Form = ({callBack}) => {
                 alert("Flyer posted successfully! It should be accepted and able to view within 12 hours.")
                 callBack() // closes modal from parent component
             });
+    } else {
+      alert("Please complete all fields above and verify email is valid")
     }
   }
 
@@ -66,18 +76,18 @@ const Form = ({callBack}) => {
             required
             name="org"
             value={formData.organizationName}
-            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+            onChange={handleInputChange} placeholder="Enter your Org name here" className="input input-bordered w-full max-w-xs" />
       </div>
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
           <span className="label-text">Point of Contact</span>
         </label>
-        <input type="text" id="pointOfContact"
+        <input type="email" id="pointOfContact"
             required
             name="pointOfContact"
             value={formData.pointOfContact}
-            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+            onChange={handleInputChange} placeholder="Please enter an email here" className="input input-bordered w-full max-w-xs" />
       </div>
 
       <div className="form-control w-full max-w-xs">
@@ -88,7 +98,7 @@ const Form = ({callBack}) => {
             required
             name="loc"
             value={formData.location}
-            onChange={handleInputChange} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+            onChange={handleInputChange} placeholder="Please enter an address or N/A" className="input input-bordered w-full max-w-xs" />
       </div>
 
       <div className="w-full max-w-xs">
@@ -116,6 +126,17 @@ const Form = ({callBack}) => {
             required />
       </div>
 
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">Associated Link</span>
+        </label>
+        <input type="text" id="link"
+            required
+            name="link"
+            value={formData.link}
+            onChange={handleInputChange} placeholder="Enter event/Org link here" className="input input-bordered w-full max-w-xs" />
+      </div>
+
       
       <div className="form-control">
         <label className="label">
@@ -125,15 +146,15 @@ const Form = ({callBack}) => {
         <div class="form-control w-6/12">
           <label class="label cursor-pointer">
             <span class="label-text">On-Campus</span> 
-            <input onChange={handleInputChange} checked={formData.filter_location === "oncampus"} id="oncampus" value="oncampus" type="radio" name="filter_location" class="radio checked:bg-primary"/>
+            <input required onChange={handleInputChange} checked={formData.filter_location === "oncampus"} id="oncampus" value="oncampus" type="radio" name="filter_location" class="radio checked:bg-primary"/>
           </label>
           <label class="label cursor-pointer">
             <span class="label-text">Off-Campus</span> 
-            <input onChange={handleInputChange} checked={formData.filter_location === "offcampus"} id="offcampus" value="offcampus" type="radio" name="filter_location" class="radio checked:bg-secondary" />
+            <input required onChange={handleInputChange} checked={formData.filter_location === "offcampus"} id="offcampus" value="offcampus" type="radio" name="filter_location" class="radio checked:bg-secondary" />
           </label>
           <label class="label cursor-pointer">
             <span class="label-text">Remote</span> 
-            <input onChange={handleInputChange} checked={formData.filter_location === "remote"} id="remote" value="remote" type="radio" name="filter_location" class="radio checked:bg-accent" />
+            <input required onChange={handleInputChange} checked={formData.filter_location === "remote"} id="remote" value="remote" type="radio" name="filter_location" class="radio checked:bg-accent" />
           </label>
         </div>
       </div>
@@ -147,15 +168,15 @@ const Form = ({callBack}) => {
         <div class="form-control w-6/12">
           <label class="label cursor-pointer">
             <span class="label-text">Within the Week</span> 
-            <input onChange={handleInputChange} checked={formData.filter_time === "week"} id="week" value="week" type="radio" name="filter_time" class="radio checked:bg-primary"/>
+            <input required onChange={handleInputChange} checked={formData.filter_time === "week"} id="week" value="week" type="radio" name="filter_time" class="radio checked:bg-primary"/>
           </label>
           <label class="label cursor-pointer">
             <span class="label-text">Within the Month</span> 
-            <input onChange={handleInputChange} checked={formData.filter_time === "month"} id="month" value="month" type="radio" name="filter_time" class="radio checked:bg-secondary" />
+            <input required onChange={handleInputChange} checked={formData.filter_time === "month"} id="month" value="month" type="radio" name="filter_time" class="radio checked:bg-secondary" />
           </label>
           <label class="label cursor-pointer">
             <span class="label-text">Non-Event</span> 
-            <input onChange={handleInputChange} checked={formData.filter_time === "nonevent"} id="nonevent" value="nonevent" type="radio" name="filter_time" class="radio checked:bg-accent" />
+            <input required onChange={handleInputChange} checked={formData.filter_time === "nonevent"} id="nonevent" value="nonevent" type="radio" name="filter_time" class="radio checked:bg-accent" />
           </label>
         </div>
       </div>
@@ -232,6 +253,7 @@ const Form = ({callBack}) => {
 
       <button className="btn btn-outline btn-accent" onClick={handleSubmit}>Submit</button>
     </div>
+    
   );
 }
 

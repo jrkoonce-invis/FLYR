@@ -49,9 +49,10 @@ const Flyers = ({handleScroll, selectedFilters}) => {
                                                 selectedFilters.split(",").includes(item.filter_time) || 
                                                 (selectedFilters.split(",").includes(item.cate1) && item.cate1 != "") || 
                                                 (selectedFilters.split(",").includes(item.cate2) && item.cate2 != "") || 
-                                                (selectedFilters.split(",").includes(item.cate3) && item.cate3 != "") )
+                                                (selectedFilters.split(",").includes(item.cate3) && item.cate3 != "") ||
+                                                (selectedFilters.split(",").includes(item.link) && item.cate3 != "") )
                                                 && date <= mydate) {
-                    return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} cate1={item.cate1} cate2={item.cate2} cate3={item.cate3} />
+                    return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} cate1={item.cate1} cate2={item.cate2} cate3={item.cate3} link={item.link} />
                 }
             })}
         </div>

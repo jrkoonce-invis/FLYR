@@ -1,7 +1,7 @@
 import React from "react"
 
 
-const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3}) => {
+const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link}) => {
       
         const [flipped, setFlipped] = React.useState(false)
 
@@ -49,6 +49,9 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3}) => {
                             <p className="text-pretty"><b>Organization:</b> {org}</p>
                             <p className="text-pretty"><b>Date:</b> {date}</p>
                             <p className="text-pretty"><b>Location:</b> {loc}</p>
+                            {link && link != "" &&
+                                <p className="text-pretty"><b>Website:</b> <a className="underline" target="_blank" href={link}>Click Here</a></p>
+                            }
                         </div>
 
                         <div className="flex flex-col items-center gap-1">
