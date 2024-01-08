@@ -147,17 +147,38 @@ def root():
     return render_template("index.html")
 
 # API returns accepted flyers
-@app.route("/flyers", methods=["GET"])
+@app.route("/flyers", methods=["GET", "PUT"])
 def flyers():
     flyerData = db.FlyerData
-    mongoData = list(flyerData.find({}))
 
-    for item in mongoData:
-        item["imageData"] = str(base64.b64encode(item["imageData"]).decode('utf-8'))
+    if request.method == "GET":
+        mongoData = list(flyerData.find({}))
 
-    # https://www.mongodb.com/community/forums/t/how-should-i-handle-objectid-with-flask/178220
-    # Return data as JSON
-    return jsonify(json.loads(json_util.dumps(mongoData)))
+        for item in mongoData:
+            item["imageData"] = str(base64.b64encode(item["imageData"]).decode('utf-8'))
+
+        # https://www.mongodb.com/community/forums/t/how-should-i-handle-objectid-with-flask/178220
+        # Return data as JSON
+        return jsonify(json.loads(json_util.dumps(mongoData)))
+    elif request.method == "PUT":
+        mongoid = request.args.get("mongoid")
+
+        linkClicks = request.args.get("updatedLinkClicks")
+        flyerClicks = request.args.get("updatedFlyerClicks")
+        print("curr", flyerClicks)
+
+        filter = {"_id": ObjectId(mongoid)}
+        update = {"$set": {"linkClicks": linkClicks}, "$set": {"flyerClicks": flyerClicks}}
+
+        print(ObjectId(mongoid))
+
+        count = flyerData.count_documents(filter)
+        print(count)
+
+        res = flyerData.update_one(filter, update)
+        print(res.modified_count)
+
+        return "Updated Clicks Successfully"
 
 
 # API retrieves uploaded flyer data
@@ -169,6 +190,8 @@ def upload():
     data = json.loads(request.form["data"])
     data["isValid"] = "FALSE"
     data["filename"] = file.filename
+    data["linkClicks"] = 0
+    data["flyerClicks"] = 0
 
     image_data = file.read()
     image_data = io.BytesIO(image_data).read()
@@ -196,7 +219,7 @@ def admin():
     if request.method == "PUT":
         mongoid = request.args.get("mongoid")
 
-        filter = {"_id": ObjectId(mongoid)}
+        filter = {"_id": (ObjectId(mongoid))}
         update = {"$set": {"isValid": "TRUE"}}
 
         print(ObjectId(mongoid))

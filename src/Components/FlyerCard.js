@@ -1,9 +1,26 @@
 import React from "react"
+import axios from "axios"
 
-
-const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link}) => {
+const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoid, linkClicks, flyerClicks}) => {
       
+        const url = "../../admin"    
+    
         const [flipped, setFlipped] = React.useState(false)
+
+        const addFlyerClick = async () => {
+            console.log(flyerClicks)
+            await axios.put(url, { params : { "mongoid" : mongoid["$oid"], 
+                                                                "updatedLinkClicks" : linkClicks, 
+                                                                "updatedFlyerClicks" : (flyerClicks + 1) 
+                                                            } })
+            // await axios.put("http://127.0.0.1:8000/flyers", { params : { "mongoid" : mongoid["$oid"], 
+            //                                                              "updatedLinkClicks" : linkClicks, 
+            //                                                              "updatedFlyerClicks" : (flyerClicks + 1) 
+            //                                                             } })
+              .then((response) => {
+                console.log(response)
+              });
+        }
 
         // const [cardstyle, setCardStyle] = React.useState("grid justify-items-center h-screen content-center flipcard")
         // // hover:scale-105 duration-500 
@@ -31,6 +48,9 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link}) => {
                 setCardStyle("grid justify-items-center content-center flipcard is-flipped")
                 setBackStyle("object-scale-down card__face card__face--back absolute w-full h-full")
                 setFlipped(true)
+
+                addFlyerClick()
+
             } else {
                 setCardStyle("grid justify-items-center content-center flipcard")
                 setBackStyle("object-scale-down card__face card__face--back absolute w-full h-full")
