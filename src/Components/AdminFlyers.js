@@ -43,7 +43,7 @@ const Flyers = ({className}) => {
                 {flyerData.map((item, idx) => {
 
                     if (item.isValid == "FALSE" || showAllFlyers == "TRUE") {
-                        return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} pointOfContact={item.pointOfContact} filename={item.filename} mongoid={item._id} />
+                        return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} pointOfContact={item.pointOfContact} cate1={item.cate1} cate2={item.cate2} cate3={item.cate3} link={item.link} filename={item.filename} mongoid={item._id} />
                     }
                 })}
             </div>

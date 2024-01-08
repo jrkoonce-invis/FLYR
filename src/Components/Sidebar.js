@@ -231,7 +231,7 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                         </label>
                     </div>
                 </div>
-                <div className="grid justify-items-center mb-4 mt-10">
+                <div className="grid justify-items-center mb-4 mt-10 w-full">
                     <PostButton postClick={postClick}></PostButton>
                 </div>
 

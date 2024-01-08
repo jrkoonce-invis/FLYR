@@ -3,7 +3,7 @@ import axios from "axios"
 
 
 
-const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid}) => {
+const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid, cate1, cate2, cate3, link}) => {
 
     const url = "../../admin"
 
@@ -39,18 +39,19 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid
             ) : (
               <img className="opacity-50" src={`data:image/png;base64,${imageData}`}/>
             )}
-            <div>
+            <div className="rounded-md bg-primary">
                 <p>Organization: {org}</p>
-                <br></br>
                 <p>Date: {date}</p>
-                <br></br>
                 <p>Location: {loc}</p>
-                <br></br>
                 <p>POC: {pointOfContact}</p>
+                <p>Cate1: {cate1}</p>
+                <p>Cate2: {cate2}</p>
+                <p>Cate3: {cate3}</p>
+                <p>Link: <a href={link} target="_blank" className="underline">Click Here</a></p>
                 <br></br>
-                <button onClick={acceptFlyer}>ACCEPT</button>
+                <button className="btn btn-neutral" onClick={acceptFlyer}>ACCEPT</button>
                 <br></br><br></br>
-                <button onClick={deleteFlyer}>DELETE</button>
+                <button className="btn btn-neutral" onClick={deleteFlyer}>DELETE</button>
             </div>
         </div>
     )

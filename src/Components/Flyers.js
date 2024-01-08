@@ -29,7 +29,7 @@ const Flyers = ({handleScroll, selectedFilters}) => {
     return (
         <div onScroll={handleScroll} className="grid xl:grid-cols-2 grid-cols-1 justify-items-center snap-y snap-mandatory h-full overflow-auto no-scrollbar scroll-pb-[1in] md:scroll-pb-0">
             {!loaded &&
-                <div className="md:fixed md:left-[calc(50vw)]">
+                <div className="z-0 md:fixed md:left-[calc(50vw)]">
                     <Svg></Svg>
                 </div>
             }
