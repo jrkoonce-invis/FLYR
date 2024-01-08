@@ -40,7 +40,7 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
     }
 
     const aboutUsView = () => {
-        my_modal_2.showModal()
+        document.getElementById('my_modal_2').showModal()
     }
 
     const refreshLogo = () => {
