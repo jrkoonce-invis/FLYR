@@ -8,15 +8,15 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
         const [flipped, setFlipped] = React.useState(false)
 
         const addFlyerClick = async () => {
-            console.log(flyerClicks)
+            console.log(flyerClicks, Number(flyerClicks) + 1)
             await axios.put(url, { params : { "mongoid" : mongoid["$oid"], 
                                                                 "updatedLinkClicks" : linkClicks, 
                                                                 "updatedFlyerClicks" : (flyerClicks + 1) 
                                                             } })
-            // await axios.put("http://127.0.0.1:8000/flyers", { params : { "mongoid" : mongoid["$oid"], 
-            //                                                              "updatedLinkClicks" : linkClicks, 
-            //                                                              "updatedFlyerClicks" : (flyerClicks + 1) 
-            //                                                             } })
+            // await axios.put("http://127.0.0.1:8000/flyers", null,  { params : { "mongoid" : mongoid["$oid"], 
+            //                                                                 "updatedLinkClicks" : linkClicks, 
+            //                                                                 "updatedFlyerClicks" : (Number(flyerClicks) + 1) 
+            //                                                                 } })
               .then((response) => {
                 console.log(response)
               });
@@ -62,7 +62,7 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
         <div>
 
             {/* MOBILE VIEW */}
-            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto block md:hidden">
+            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto block md:hidden" onClick={addFlyerClick}>
                 <a href={link} target="_block">
                 <div className={cardstyle}>
                     <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
@@ -75,11 +75,11 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
             </div>
 
             {/* COMPUTER VIEW */}
-            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto hidden md:block" onClick={handleFlip}>
+            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-auto cursor-pointer h-auto sm:h-[60vh] sm:w-auto hidden md:block" onClick={handleFlip}>
                 <div className={cardstyle}>
                     <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
                     <div className={backstyle}>
-                        <div className="object-scale-down w-full h-full bg-base-200 flex flex-col gap-8 justify-center items-center">
+                        <div className="w-full h-full bg-base-200 flex flex-col gap-8 justify-center items-center overflow-contain">
 
                             <div className="p-6 bg-base-300 rounded-lg border-4 border-white max-w-[80%]">
                                 <p className="text-pretty"><b>Organization:</b> {org}</p>

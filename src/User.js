@@ -43,7 +43,7 @@ const User = () => {
             </div>
 
             {/* MOBILE TOPBAR */}
-            <div className="z-20 h-[1in] w-screen m-0 t-0 fixed bg-base-400 md:hidden flex flex-row items-center pl-5 pr-5 justify-between">
+            <div className="z-30 h-[1in] w-screen m-0 fixed bg-base-100 md:hidden flex flex-row items-center pl-5 pr-5 justify-between">
 
                     <div className="">
                         <img className="object-contain w-[.7in] h-[.7in] hover:cursor-pointer" src={require(".//Assets/LOGO_DM.png")}  alt={"Logo"} onClick={refreshLogo} />
@@ -67,8 +67,9 @@ const User = () => {
             </div>
 
             {/* FLYERS SECTION */}
-            <div className="z-0 h-[calc(100vh)] pt-[1in] md:h-screen md:p-0 md:ml-60">
+            <div className="z-0 block h-[calc(100vh)] pt-[1in] md:h-screen md:p-0 md:ml-60 overflow-hidden">
                 <Flyers handleScroll={handleScroll} selectedFilters={selectedFilters}></Flyers>
+                <div className="h-32"></div>
             </div>
 
             {/* ARROW SCROLL ANIMATION */}

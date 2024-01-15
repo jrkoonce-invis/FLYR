@@ -3779,8 +3779,8 @@ details.collapse summary::-webkit-details-marker {
   z-index: 0;
 }
 
-.z-20 {
-  z-index: 20;
+.z-30 {
+  z-index: 30;
 }
 
 .z-40 {
@@ -3925,6 +3925,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-\[90vw\] {
   width: 90vw;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -4076,6 +4080,10 @@ details.collapse summary::-webkit-details-marker {
 
 .overflow-auto {
   overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-lg {

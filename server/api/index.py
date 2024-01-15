@@ -168,7 +168,7 @@ def flyers():
         print("curr", flyerClicks)
 
         filter = {"_id": ObjectId(mongoid)}
-        update = {"$set": {"linkClicks": linkClicks}, "$set": {"flyerClicks": flyerClicks}}
+        update = {"$set": {"flyerClicks": flyerClicks}}
 
         print(ObjectId(mongoid))
 
