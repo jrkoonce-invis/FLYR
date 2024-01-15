@@ -3827,6 +3827,10 @@ details.collapse summary::-webkit-details-marker {
   margin-top: .3in;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -4136,6 +4140,10 @@ details.collapse summary::-webkit-details-marker {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.pb-60 {
+  padding-bottom: 15rem;
 }
 
 .pl-5 {

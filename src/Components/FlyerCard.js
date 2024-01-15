@@ -59,36 +59,51 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
         }
 
     return (
-        <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 cursor-pointer mt-5 mb-5 w-[90vw] h-auto sm:h-[60vh] sm:w-auto" onClick={handleFlip}>
-            <div className={cardstyle}>
-                <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
-                <div className={backstyle}>
-                    <div className="object-scale-down w-full h-full bg-base-200 flex flex-col gap-8 justify-center items-center">
+        <div>
 
-                        <div className="p-6 bg-base-300 rounded-lg border-4 border-white max-w-[80%]">
-                            <p className="text-pretty"><b>Organization:</b> {org}</p>
-                            <p className="text-pretty"><b>Date:</b> {date}</p>
-                            <p className="text-pretty"><b>Location:</b> {loc}</p>
-                            {link && link != "" &&
-                                <p className="text-pretty"><b>Website:</b> <a className="underline" target="_blank" href={link}>Click Here</a></p>
-                            }
+            {/* MOBILE VIEW */}
+            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto block md:hidden">
+                <a href={link} target="_block">
+                <div className={cardstyle}>
+                    <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
+                    <div className={backstyle}>
+                        <div className="object-scale-down w-full h-full bg-base-200 flex flex-col gap-8 justify-center items-center">
                         </div>
+                    </div>
+                </div>
+                </a>
+            </div>
 
-                        <div className="flex flex-col items-center gap-1">
-                            {cate1 != "" && 
-                                <div class="badge badge-primary">{cate1}</div>
-                            }
-                            <p></p>
-                            {cate2 != "" && 
-                                <div class="badge badge-secondary">{cate2}</div>
-                            }
-                            <p></p>
-                            {cate3 != "" && 
-                                <div class="badge badge-accent">{cate3}</div>
-                            }
+            {/* COMPUTER VIEW */}
+            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto hidden md:block" onClick={handleFlip}>
+                <div className={cardstyle}>
+                    <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
+                    <div className={backstyle}>
+                        <div className="object-scale-down w-full h-full bg-base-200 flex flex-col gap-8 justify-center items-center">
+
+                            <div className="p-6 bg-base-300 rounded-lg border-4 border-white max-w-[80%]">
+                                <p className="text-pretty"><b>Organization:</b> {org}</p>
+                                <p className="text-pretty"><b>Date:</b> {date}</p>
+                                <p className="text-pretty"><b>Location:</b> {loc}</p>
+                                {link && link != "" &&
+                                    <p className="text-pretty z-50"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>Click Here</a></p>
+                                }                         
+                            </div>
+
+                            <div className="flex flex-col items-center gap-1">
+                                {cate1 != "" && 
+                                    <div class="badge badge-primary">{cate1}</div>
+                                }
+                                <p></p>
+                                {cate2 != "" && 
+                                    <div class="badge badge-secondary">{cate2}</div>
+                                }
+                                <p></p>
+                                {cate3 != "" && 
+                                    <div class="badge badge-accent">{cate3}</div>
+                                }
+                            </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
             </div>

@@ -187,6 +187,10 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                             <span class="label-text">Free Food</span>
                             <input onChange={handleFilter} value="Free Food" type="checkbox" class="checkbox checkbox-primary" />
                         </label>
+                        <label class="cursor-pointer label">
+                            <span class="label-text">Social</span>
+                            <input onChange={handleFilter} value="Social" type="checkbox" class="checkbox checkbox-secondary" />
+                        </label>
                     </div>
 
                     </div>
@@ -235,9 +239,10 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                     <PostButton postClick={postClick}></PostButton>
                 </div>
 
-                <button className="btn btn-neutral w-full" onClick={aboutUsView}>About Us</button>
+
+                <button className="btn btn-neutral w-full hidden md:block" onClick={aboutUsView}>About Us</button>
                 <dialog id="my_modal_2" class="modal">
-                    <div className="modal-box">
+                    <div className="modal-box z-50">
                         <h3 className="font-bold text-lg">About Us</h3>
                         <p className="py-4">Hello! We are FLYR, an....</p>
                     </div>

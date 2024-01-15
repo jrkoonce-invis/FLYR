@@ -202,6 +202,7 @@ const Form = ({callBack}) => {
           <option value="Sciences">Sciences</option>
           <option value="University">University</option>
           <option value="Service">Service</option>
+          <option value="Social">Social</option>
           <option value="Fraternaties/ Sororities">Fraternaties/Sororities</option>
           <option value="Sports and Recreation">Sports and Recreation</option>
           <option value="Free Food">Free Food</option>
@@ -223,6 +224,7 @@ const Form = ({callBack}) => {
           <option value="Sciences">Sciences</option>
           <option value="University">University</option>
           <option value="Service">Service</option>
+          <option value="Social">Social</option>
           <option value="Fraternaties/ Sororities">Fraternaties/Sororities</option>
           <option value="Sports and Recreation">Sports and Recreation</option>
           <option value="Free Food">Free Food</option>
@@ -244,6 +246,7 @@ const Form = ({callBack}) => {
           <option value="Sciences">Sciences</option>
           <option value="University">University</option>
           <option value="Service">Service</option>
+          <option value="Social">Social</option>
           <option value="Fraternaties/ Sororities">Fraternaties/Sororities</option>
           <option value="Sports and Recreation">Sports and Recreation</option>
           <option value="Free Food">Free Food</option>
