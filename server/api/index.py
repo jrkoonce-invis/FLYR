@@ -25,7 +25,8 @@ app = Flask(__name__,  static_url_path='', static_folder='build', template_folde
 app.secret_key = env.get("APP_SECRET_KEY") # get secret key (Auth0)
 CORS(app)
 
-uri = "mongodb+srv://flyr:buildillinois@flyr.u2onar1.mongodb.net/?retryWrites=true&w=majority"
+# uri = "mongodb+srv://flyr:buildillinois@flyr.u2onar1.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://flyruiuc:flyruiuc2026@cluster0.xrevvq5.mongodb.net/?retryWrites=true&w=majority"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
@@ -224,8 +225,7 @@ def admin():
 
         print(ObjectId(mongoid))
 
-        count = flyerData.count_documents(filter)
-        print(count)
+        print(flyerData.count_documents(filter), flyerData.count_documents({"_id": (ObjectId(mongoid))}))
 
         res = flyerData.update_one(filter, update)
         print(res.modified_count)

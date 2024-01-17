@@ -48,7 +48,6 @@ const Form = ({callBack}) => {
                               && formData.link != ""
                               && formData.date != ""
                               && formData.filter_location != ""
-                              && formData.filter_time != ""
                               && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(formData.pointOfContact) ) {
         TOTAL_FORM_DATA.append("data", JSON.stringify(formData))
         TOTAL_FORM_DATA.append("file", selectedFile)
@@ -160,7 +159,7 @@ const Form = ({callBack}) => {
       </div>
 
       
-      <div className="form-control">
+      {/* <div className="form-control">
         <label className="label">
           <span className="label-text">Time</span>
         </label>
@@ -179,7 +178,7 @@ const Form = ({callBack}) => {
             <input required onChange={handleInputChange} checked={formData.filter_time === "nonevent"} id="nonevent" value="nonevent" type="radio" name="filter_time" class="radio checked:bg-accent" />
           </label>
         </div>
-      </div>
+      </div> */}
 
       <div className="form-control w-full max-w-xs">
         <label className="label">

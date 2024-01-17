@@ -36,17 +36,27 @@ const Flyers = ({handleScroll, selectedFilters}) => {
             {flyerData.map((item, idx) => {
 
                 // date comparison
-                var q = new Date();
-                var m = q.getMonth();
-                var d = q.getDay();
-                var y = q.getFullYear();
-
-                var date = new Date(y, m, d);
+                var date = new Date();
                 var mydate = new Date(item.date);
+
+                let time_diff = mydate.getTime() - date.getTime();
+                let days_diff = Math.round(time_diff / (1000 * 3600 * 24)) + 1;
+
+                // console.log(date, mydate, time_diff, days_diff)
+
+                let item_filtertime = "";
+
+                if (days_diff <= 1) {
+                    item_filtertime = "24"
+                } else if (days_diff <= 7) {
+                    item_filtertime = "week"
+                } else if (days_diff <= 21) {
+                    item_filtertime = "month"
+                }
 
                 if (item.isValid == "TRUE" &&  (selectedFilters.length == 0 || 
                                                 selectedFilters.split(",").includes(item.filter_location) || 
-                                                selectedFilters.split(",").includes(item.filter_time) || 
+                                                selectedFilters.split(",").includes(item_filtertime) || 
                                                 (selectedFilters.split(",").includes(item.cate1) && item.cate1 != "") || 
                                                 (selectedFilters.split(",").includes(item.cate2) && item.cate2 != "") || 
                                                 (selectedFilters.split(",").includes(item.cate3) && item.cate3 != "") ||
@@ -55,6 +65,7 @@ const Flyers = ({handleScroll, selectedFilters}) => {
                     return <FlyerCard key={idx} imageData={item.imageData} org={item.org} date={item.date} loc={item.loc} cate1={item.cate1} cate2={item.cate2} cate3={item.cate3} link={item.link} mongoid={item._id} linkClicks={item.linkClicks} flyerClicks={item.flyerClicks} />
                 }
             })}
+            <div className="h-24 md:h-0"></div>
         </div>
     )
 }

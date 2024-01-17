@@ -222,16 +222,16 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                     <div className="collapse-title font-medium">Time</div>
                     <div class="collapse-content form-control">
                         <label class="cursor-pointer label">
+                            <span class="label-text">Within 24 Hours</span>
+                            <input onChange={handleFilter} value="24" type="checkbox" class="checkbox checkbox-primary" />
+                        </label>
+                        <label class="cursor-pointer label">
                             <span class="label-text">Within the Week</span>
-                            <input onChange={handleFilter} value="week" type="checkbox" class="checkbox checkbox-primary" />
+                            <input onChange={handleFilter} value="week" type="checkbox" class="checkbox checkbox-secondary" />
                         </label>
                         <label class="cursor-pointer label">
-                            <span class="label-text">Within the Month</span>
-                            <input onChange={handleFilter} value="month" type="checkbox" class="checkbox checkbox-secondary" />
-                        </label>
-                        <label class="cursor-pointer label">
-                            <span class="label-text">Non-Event</span>
-                            <input onChange={handleFilter} value="nonevent" type="checkbox" class="checkbox checkbox-accent" />
+                            <span class="label-text">Within 4 Weeks</span>
+                            <input onChange={handleFilter} value="month" type="checkbox" class="checkbox checkbox-accent" />
                         </label>
                     </div>
                 </div>

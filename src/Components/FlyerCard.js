@@ -62,7 +62,7 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
         <div>
 
             {/* MOBILE VIEW */}
-            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto block md:hidden" onClick={addFlyerClick}>
+            {/* <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-[90vw] cursor-pointer h-auto sm:h-[60vh] sm:w-auto block md:hidden" onClick={addFlyerClick}>
                 <a href={link} target="_block">
                 <div className={cardstyle}>
                     <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
@@ -72,10 +72,10 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> */}
 
             {/* COMPUTER VIEW */}
-            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-5 w-auto cursor-pointer h-auto sm:h-[60vh] sm:w-auto hidden md:block" onClick={handleFlip}>
+            <div className="snap-center snap-always scene sm:hover:scale-110 duration-500 mt-5 mb-1 md:mb-5 w-[90vw] md:w-auto cursor-pointer h-auto sm:h-[60vh]" onClick={handleFlip}>
                 <div className={cardstyle}>
                     <img className={frontstyle} src={`data:image/png;base64,${imageData}`}/>
                     <div className={backstyle}>
@@ -86,11 +86,11 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
                                 <p className="text-pretty"><b>Date:</b> {date}</p>
                                 <p className="text-pretty"><b>Location:</b> {loc}</p>
                                 {link && link != "" &&
-                                    <p className="text-pretty z-50"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>Click Here</a></p>
+                                    <p className="text-pretty z-50 hidden md:block"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>Click Here</a></p>
                                 }                         
                             </div>
 
-                            <div className="flex flex-col items-center gap-1">
+                            {/* <div className="flex flex-row items-center gap-1">
                                 {cate1 != "" && 
                                     <div class="badge badge-primary">{cate1}</div>
                                 }
@@ -102,11 +102,16 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
                                 {cate3 != "" && 
                                     <div class="badge badge-accent">{cate3}</div>
                                 }
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {link && link != "" &&
+                <p className="text-pretty z-50 block md:hidden"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>Tap Here</a></p>
+            }                         
+
         </div>
     )
 }
