@@ -3927,8 +3927,20 @@ details.collapse summary::-webkit-details-marker {
   width: .7in;
 }
 
+.w-\[40\%\] {
+  width: 40%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
+}
+
 .w-\[90vw\] {
   width: 90vw;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -3943,6 +3955,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .max-w-5xl {
@@ -4068,6 +4084,10 @@ details.collapse summary::-webkit-details-marker {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-12 {
+  gap: 3rem;
 }
 
 .gap-4 {

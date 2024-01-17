@@ -51,8 +51,8 @@ const Form = ({callBack}) => {
                               && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(formData.pointOfContact) ) {
         TOTAL_FORM_DATA.append("data", JSON.stringify(formData))
         TOTAL_FORM_DATA.append("file", selectedFile)
-        // await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
-        await axios.post(url, TOTAL_FORM_DATA)
+        await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
+        // await axios.post(url, TOTAL_FORM_DATA)
             .then((response) => {
                 console.log(response)
                 alert("Flyer posted successfully! It should be accepted and able to view within 12 hours.")
@@ -66,6 +66,8 @@ const Form = ({callBack}) => {
   return (
     <div className="grid gap-4 max-w-xs w-full">
       <h1 className="text-3xl">Flyer Upload</h1>
+
+      <p>Please complete all the fields below and provide a valid email for "Point of Contact". Your posted flyer will be reviewed by the FLYR team and should be up within 12 hours!</p>
 
       <div className="form-control w-full max-w-xs">
         <label className="label">

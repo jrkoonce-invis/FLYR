@@ -242,9 +242,17 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
 
                 <button className="btn btn-neutral w-full hidden md:block" onClick={aboutUsView}>About Us</button>
                 <dialog id="my_modal_2" class="modal">
-                    <div className="modal-box z-50">
+                    <div className="modal-box z-50 w-6/12 max-w-2xl">
                         <h3 className="font-bold text-lg">About Us</h3>
-                        <p className="py-4">Hello! We are FLYR, an....</p>
+                        <div className="flex flex-row gap-12">
+                            <div className="w-[50%]">
+                                <p className="py-4">Hello! This is FLYR, an all-in-one place to see all of the flyers on campus in one place. In this way, students can better learn about opportunities across campus! Are you an organization that needs help with outreach? Feel free to post a flyer! </p>
+                                <p className="py-4">Have some suggestions, questions, or want to help out? Feel free to contact us on Instagram <a className="underline" href="https://www.instagram.com/flyr_uiuc/">@flyruiuc</a> or through an email to <a className="underline" href="mailto:flyruiuc@gmail.com">flyruiuc@gmail.com</a>!</p>
+                            </div>
+                            <div className="w-[40%] grid">
+                                <img className="object-contain w-auto h-auto" src={require("../Assets/LOGO_DM.png")}  alt={"Logo"}/>
+                            </div>
+                        </div>
                     </div>
                     <form method="dialog" className="modal-backdrop">
                         <button>close</button>
