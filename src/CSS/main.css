@@ -3879,6 +3879,10 @@ details.collapse summary::-webkit-details-marker {
   height: 8rem;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
 .h-\[\.4in\] {
   height: .4in;
 }

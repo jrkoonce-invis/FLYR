@@ -269,7 +269,7 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                     </div>
                 </div>
 
-                <div className="h-24 md:h-12"></div>
+                <div className="h-48 md:h-12"></div>
 
                 {/* <p className="text-center mt-12 animate-bounce bg-neutral rounded-lg p-4 text-sm">TAP A FLYER TO SEE MORE INFORMATION</p> */}
 
