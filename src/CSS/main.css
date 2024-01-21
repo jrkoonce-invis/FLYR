@@ -3811,12 +3811,28 @@ details.collapse summary::-webkit-details-marker {
   margin-bottom: 1.25rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .ml-\[85vw\] {
   margin-left: 85vw;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 .mt-5 {
@@ -3849,6 +3865,10 @@ details.collapse summary::-webkit-details-marker {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .h-24 {
@@ -3909,6 +3929,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-4\/12 {
+  width: 33.333333%;
 }
 
 .w-6\/12 {
@@ -4143,6 +4167,11 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(191 219 254 / var(--tw-bg-opacity));
 }
 
+.bg-neutral {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+}
+
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--p) / var(--tw-bg-opacity));
@@ -4154,6 +4183,10 @@ details.collapse summary::-webkit-details-marker {
 
 .object-scale-down {
   object-fit: scale-down;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .p-6 {
@@ -4186,6 +4219,10 @@ details.collapse summary::-webkit-details-marker {
   padding-top: 1in;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -4194,6 +4231,11 @@ details.collapse summary::-webkit-details-marker {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
@@ -4348,6 +4390,14 @@ details.collapse summary::-webkit-details-marker {
 
   .md\:h-0 {
     height: 0px;
+  }
+
+  .md\:h-12 {
+    height: 3rem;
+  }
+
+  .md\:h-auto {
+    height: auto;
   }
 
   .md\:h-screen {

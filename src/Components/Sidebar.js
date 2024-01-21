@@ -58,11 +58,11 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
     }
 
     return (
-        <div className="h-screen flex flex-col justify-items-center justify-center">
+        <div className="h-screen flex flex-col justify-items-center justify-center overflow-auto">
 
             {/* LOGO */}
             <div className="mt-8">
-                <img className="object-contain w-full h-32 hover:cursor-pointer" src={require("../Assets/LOGO_DM.png")} onClick={refreshLogo}  alt={"Logo"}/>
+                <img className="object-contain w-full h-32 hover:cursor-pointer" src={require("../Assets/BOLDLOGO.png")} onClick={refreshLogo}  alt={"Logo"}/>
             </div>
 
             {/* CATEGORIES MODAL */}
@@ -235,10 +235,9 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                         </label>
                     </div>
                 </div>
-                <div className="grid justify-items-center mb-4 mt-10 w-full">
+                <div className="grid justify-items-center mb-4 mt-10 w-full ">
                     <PostButton postClick={postClick}></PostButton>
                 </div>
-
 
                 <button className="btn btn-neutral w-full hidden md:block" onClick={aboutUsView}>About Us</button>
                 <dialog id="my_modal_2" class="modal">
@@ -250,7 +249,7 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                                 <p className="py-4">Have some suggestions, questions, or want to help out? Feel free to contact us on Instagram <a className="underline" href="https://www.instagram.com/flyr_uiuc/">@flyruiuc</a> or through an email to <a className="underline" href="mailto:flyruiuc@gmail.com">flyruiuc@gmail.com</a>!</p>
                             </div>
                             <div className="w-[40%] grid">
-                                <img className="object-contain w-auto h-auto" src={require("../Assets/LOGO_DM.png")}  alt={"Logo"}/>
+                                <img className="object-contain w-auto h-auto" src={require("../Assets/REDLOGO.png")}  alt={"Logo"}/>
                             </div>
                         </div>
                     </div>
@@ -258,6 +257,21 @@ const Sidebar = ({ postClick, setSelectedFilters, selectedFilters}) => {
                         <button>close</button>
                     </form>
                 </dialog>
+
+                {/* MOBILE ABOUT US */}
+                <div className="collapse bg-neutral rounded-lg md:hidden">
+                    <input type="checkbox" /> 
+                    <div className="collapse-title text-sm font-bold text-center ml-4 mt-0 mt-1">ABOUT US</div>
+                    <div className="collapse-content justify-center items-center flex flex-col">
+                        <img className="object-contain w-4/12 h-auto" src={require("../Assets/REDLOGO.png")}  alt={"Logo"}/>
+                        <p className="py-4">Hello! This is FLYR, an all-in-one place to see all of the flyers on campus in one place. In this way, students can better learn about opportunities across campus! Are you an organization that needs help with outreach? Feel free to post a flyer! </p>
+                        <p className="py-4">Have some suggestions, questions, or want to help out? Feel free to contact us on Instagram <a className="underline" href="https://www.instagram.com/flyr_uiuc/">@flyruiuc</a> or through an email to <a className="underline" href="mailto:flyruiuc@gmail.com">flyruiuc@gmail.com</a>!</p>      
+                    </div>
+                </div>
+
+                <div className="h-24 md:h-12"></div>
+
+                {/* <p className="text-center mt-12 animate-bounce bg-neutral rounded-lg p-4 text-sm">TAP A FLYER TO SEE MORE INFORMATION</p> */}
 
 
             </div>

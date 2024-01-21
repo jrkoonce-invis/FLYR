@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.ffff2963.css",
-    "main.js": "/static/js/main.1a656d08.js",
+    "main.css": "/static/css/main.1ee5a208.css",
+    "main.js": "/static/js/main.57184ef4.js",
+    "static/media/REDLOGO.png": "/static/media/REDLOGO.49cbcbee2b37634a4b30.png",
+    "static/media/BOLDLOGO.png": "/static/media/BOLDLOGO.fd0455702673554fca47.png",
     "static/media/LOGO_DM.png": "/static/media/LOGO_DM.0cd924719fc0680c6d3b.png",
     "static/media/Dual Ball-1s-200px(1).svg": "/static/media/Dual Ball-1s-200px(1).67b66976589f8d083863a7c07132bb7a.svg",
     "index.html": "/index.html",
-    "main.ffff2963.css.map": "/static/css/main.ffff2963.css.map",
-    "main.1a656d08.js.map": "/static/js/main.1a656d08.js.map"
+    "main.1ee5a208.css.map": "/static/css/main.1ee5a208.css.map",
+    "main.57184ef4.js.map": "/static/js/main.57184ef4.js.map"
   },
   "entrypoints": [
-    "static/css/main.ffff2963.css",
-    "static/js/main.1a656d08.js"
+    "static/css/main.1ee5a208.css",
+    "static/js/main.57184ef4.js"
   ]
 }

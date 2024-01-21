@@ -19,7 +19,7 @@ const PostButton = ({postClick}) => {
 
     return (
         <div className="w-full">
-            <div className="btn btn-neutral w-full" onClick={showModal}>
+            <div className="btn btn-neutral w-full h-16 md:h-auto" onClick={showModal}>
                 POST A FLYER HERE
             </div>
 

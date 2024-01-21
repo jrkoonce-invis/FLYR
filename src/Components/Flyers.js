@@ -16,7 +16,7 @@ const Flyers = ({handleScroll, selectedFilters}) => {
         // await axios.get("http://127.0.0.1:8000/flyers")
         await axios.get(url)
           .then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             setLoaded(true)
             setFlyerData(response.data.sort(() => Math.random() - 0.5))
           });
@@ -31,6 +31,8 @@ const Flyers = ({handleScroll, selectedFilters}) => {
             {!loaded &&
                 <div className="z-0 md:fixed md:left-[calc(50vw)]">
                     <Svg></Svg>
+                    <p className="animate-bounce block md:hidden">Tap a flyer for more information</p>
+                    <p className="animate-bounce hidden md:block">Click a flyer for more information</p>
                 </div>
             }
             {flyerData.map((item, idx) => {

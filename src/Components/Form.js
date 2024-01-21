@@ -7,6 +7,7 @@ const Form = ({callBack}) => {
   const [formData, setFormData] = useState({
     org: '',
     pointOfContact: '',
+    pointOfContactName: '',
     loc: '',
     link: '',
     date: '',
@@ -44,6 +45,7 @@ const Form = ({callBack}) => {
   const handleSubmit = async () => {
     if (selectedFile != null  && formData.org != ""
                               && formData.pointOfContact != ""
+                              && formData.pointOfContactName != ""
                               && formData.loc != ""
                               && formData.link != ""
                               && formData.date != ""
@@ -54,7 +56,7 @@ const Form = ({callBack}) => {
         // await axios.post("http://127.0.0.1:8000/upload", TOTAL_FORM_DATA)
         await axios.post(url, TOTAL_FORM_DATA)
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 alert("Flyer posted successfully! It should be accepted and able to view within 12 hours.")
                 callBack() // closes modal from parent component
             });
@@ -68,10 +70,11 @@ const Form = ({callBack}) => {
       <h1 className="text-3xl">Flyer Upload</h1>
 
       <p>Please complete all the fields below and provide a valid email for "Point of Contact". Your posted flyer will be reviewed by the FLYR team and should be up within 12 hours!</p>
+      <p>* = Required</p>
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">Organization Name</span>
+          <span className="label-text">*Organization Name</span>
         </label>
         <input type="text"id="org"
             required
@@ -82,7 +85,18 @@ const Form = ({callBack}) => {
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">Point of Contact</span>
+          <span className="label-text">*Point of Contact Name</span>
+        </label>
+        <input type="text" id="pointOfContactName"
+            required
+            name="pointOfContactName"
+            value={formData.pointOfContactName}
+            onChange={handleInputChange} placeholder="Please enter a full name" className="input input-bordered w-full max-w-xs" />
+      </div>
+
+      <div className="form-control w-full max-w-xs">
+        <label className="label">
+          <span className="label-text">*Point of Contact Email</span>
         </label>
         <input type="email" id="pointOfContact"
             required
@@ -93,7 +107,7 @@ const Form = ({callBack}) => {
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">Location</span>
+          <span className="label-text">*Location</span>
         </label>
         <input type="text" id="loc"
             required
@@ -104,7 +118,7 @@ const Form = ({callBack}) => {
 
       <div className="w-full max-w-xs">
           <label className="label">
-            <span className="label-text">Date</span>
+            <span className="label-text">*Date</span>
           </label>
           <input
             className="bg-base-100 input input-bordered w-full"
@@ -119,7 +133,7 @@ const Form = ({callBack}) => {
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">Input Flyer File (PNG, JPG/JPEG)</span>
+          <span className="label-text">*Input Flyer File (PNG, JPG/JPEG)</span>
         </label>
         <input type="file" accept=".jpg, .jpeg, .png"
             id="file"
@@ -129,7 +143,7 @@ const Form = ({callBack}) => {
 
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">Associated Link</span>
+          <span className="label-text">*Associated Link</span>
         </label>
         <input type="text" id="link"
             required
@@ -141,7 +155,7 @@ const Form = ({callBack}) => {
       
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Location</span>
+          <span className="label-text">*Location</span>
         </label>
         
         <div class="form-control w-6/12">

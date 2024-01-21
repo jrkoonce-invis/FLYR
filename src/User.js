@@ -9,14 +9,14 @@ import "./CSS/main.css"
 
 const User = () => {
 
-    const [arrowvis, setArrowvis] = React.useState("w-12 h-12")
+    const [arrowvis, setArrowvis] = React.useState("w-12 h-12 animate-bounce")
 
     const handleScroll = useCallback(() => {
-        setArrowvis("w-12 h-12 opacity-0 duration-500")
+        setArrowvis("w-12 h-12 opacity-0 duration-500 animate-bounce")
     }, [])
 
     const postClick = () => {
-        setArrowvis("w-12 h-12 opacity-0")
+        setArrowvis("w-12 h-12 opacity-0 animate-bounce")
     }
 
     const refreshLogo = () => {
@@ -78,6 +78,9 @@ const User = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
                 </svg>
             </div> */}
+
+            {/* MORE INFO */}
+            
         </div>
     )
 }

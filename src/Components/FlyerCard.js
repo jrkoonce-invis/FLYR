@@ -18,7 +18,7 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
             //                                                                 "updatedFlyerClicks" : (Number(flyerClicks) + 1) 
             //                                                                 } })
               .then((response) => {
-                console.log(response)
+                // console.log(response)
               });
         }
 
@@ -109,7 +109,7 @@ const FlyerCard = ({imageData, org, date, loc, cate1, cate2, cate3, link, mongoi
             </div>
 
             {link && link != "" &&
-                <p className="text-pretty z-50 block md:hidden"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>Tap Here</a></p>
+                <p className="text-pretty z-50 block md:hidden"><b>Website:</b> <a className="underline z-50" target="_blank" href={link}>{link.substring(0,40)+"..."}</a></p>
             }                         
 
         </div>

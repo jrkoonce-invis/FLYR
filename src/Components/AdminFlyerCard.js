@@ -3,7 +3,7 @@ import axios from "axios"
 
 
 
-const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid, cate1, cate2, cate3, link}) => {
+const FlyerCard = ({imageData, org, date, loc, pointOfContact, pointOfContactName, filename, mongoid, cate1, cate2, cate3, link}) => {
 
     const url = "../../admin"
 
@@ -20,7 +20,7 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid
         await axios.delete(url, { params : { "mongoid" : mongoid["$oid"] } })
         // await axios.delete("http://127.0.0.1:8000/admin", { params : { "mongoid" : mongoid["$oid"] } })
           .then((response) => {
-            console.log(response)
+            // console.log(response)
           });
     }
 
@@ -28,7 +28,7 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid
         await axios.put(url, null, { params : { "mongoid" : mongoid["$oid"] } })
         // await axios.put("http://127.0.0.1:8000/admin", null, { params : { "mongoid" : mongoid["$oid"] } })
           .then((response) => {
-            console.log(response)
+            // console.log(response)
           });
     }
 
@@ -43,7 +43,8 @@ const FlyerCard = ({imageData, org, date, loc, pointOfContact, filename, mongoid
                 <p>Organization: {org}</p>
                 <p>Date: {date}</p>
                 <p>Location: {loc}</p>
-                <p>POC: {pointOfContact}</p>
+                <p>POC: {pointOfContactName}</p>
+                <p>Email: {pointOfContact}</p>
                 <p>Cate1: {cate1}</p>
                 <p>Cate2: {cate2}</p>
                 <p>Cate3: {cate3}</p>
